@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/6_appadvc2122_mvc_review_demo.iml" filepath="$PROJECT_DIR$/.idea/6_appadvc2122_mvc_review_demo.iml" />
+      <module fileurl="file://$PROJECT_DIR$/appadvc2122_demo/appadvc2122.iml" filepath="$PROJECT_DIR$/appadvc2122_demo/appadvc2122.iml" />
+    </modules>
+  </component>
+</project>
