@@ -1,9 +1,6 @@
 package com.csb.appadvc2122.controller;
 
-
-import com.csb.appadvc2122.dto.AddressDTO;
 import com.csb.appadvc2122.dto.UserDTO;
-import com.csb.appadvc2122.services.AddressService;
 import com.csb.appadvc2122.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,10 +18,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private AddressService addressService;
-
     @GetMapping
     private String list(Model model) {
         model.addAttribute("users", userService.list());
@@ -43,12 +36,6 @@ public class UserController {
         return list(model);
     }
 
-    @GetMapping("/{id}")
-    private String getUser(@PathVariable Long id, Model model) {
-        model.addAttribute("user", userService.get(id));
-        model.addAttribute("address", new AddressDTO());
-        return "user/view-user";
-    }
 
     @PutMapping
     private String updateUser(UserDTO user, Model model) {
@@ -60,13 +47,6 @@ public class UserController {
     private String deleteUser(UserDTO user, Model model) {
         userService.delete(user.getId());
         return list(model);
-    }
-
-    @PostMapping("/{userId}/address")
-    private String addUserAddress(@PathVariable Long userId, AddressDTO addressDTO, Model model) {
-        addressDTO.setUserId(userId);
-        addressService.add(addressDTO);
-        return getUser(userId, model);
     }
 
 }

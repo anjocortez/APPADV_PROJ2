@@ -24,13 +24,16 @@ public class User {
     private Long id;
 
     @Column(nullable = false)
-    private String firstName;
+    private String fullName;
 
     @Column(nullable = false)
-    private String lastName;
+    private String userName;
 
     @Column(nullable = false)
-    private String emailAddress;
+    private String password;
+
+    @Column(nullable = false)
+    private String email;
 
     @Column(updatable = false)
     @CreationTimestamp
@@ -40,8 +43,8 @@ public class User {
     @UpdateTimestamp
     private LocalDateTime dateUpdated;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
-    private Set<Address> addressList;
+//    @OneToMany(mappedBy = "user", cascade = CascadeType.REMOVE)
+//    private Set<Address> addressList;
 
     public User() {}
 
@@ -51,30 +54,24 @@ public class User {
 
     public User(UserDTO userDTO) {
         this.id = userDTO.getId();
-        this.firstName = userDTO.getFirstName();
-        this.lastName = userDTO.getLastName();
-        this.emailAddress = userDTO.getEmailAddress();
+        this.fullName = userDTO.getFullName();
+        this.userName = userDTO.getUserName();
+        this.password = userDTO.getPassword();
+        this.email = userDTO.getEmail();
     }
 
-    public Long getId() {
-        return id;
+    public Long getId() { return id; }
+
+    public String getFullName() {
+        return fullName;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getUserName() {
+        return userName;
     }
+    public String getPassword() { return password; }
+    public String getEmail() { return email; }
 
-    public String getLastName() {
-        return lastName;
-    }
-
-    public String getEmailAddress() {
-        return emailAddress;
-    }
-
-    public Set<Address> getAddressList() {
-        return addressList;
-    }
 
     public LocalDateTime getDateCreated() {
         return dateCreated;

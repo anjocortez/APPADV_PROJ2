@@ -12,73 +12,58 @@ public class UserDTO {
 
     private Long id;
 
-    private String firstName;
+    private String fullName;
 
-    private String lastName;
+    private String userName;
 
-    private String emailAddress;
+    private String password;
 
-    private Set<AddressDTO> addressList;
+    private String email;
 
     public UserDTO() {}
 
-    public UserDTO(Long id, String firstName, String lastName, String emailAddress) {
+    public UserDTO(Long id, String fullName, String userName, String password) {
         this.id = id;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.emailAddress = emailAddress;
+        this.fullName = fullName;
+        this.userName = userName;
+        this.password = password;
+        this.email = email;
     }
 
     public UserDTO(User user) {
         this.id = user.getId();
-        this.firstName = user.getFirstName();
-        this.lastName = user.getLastName();
-        this.emailAddress = user.getEmailAddress();
-        this.addressList = Optional.ofNullable(user.getAddressList())
-                .orElseGet(Collections::emptySet)
-                .stream()
-                .map(AddressDTO::new)
-                .collect(Collectors.toSet());
+        this.fullName = user.getFullName();
+        this.userName = user.getUserName();
+        this.password = user.getPassword();
+        this.email = user.getEmail();
     }
 
-    public Long getId() {
-        return id;
-    }
+    public Long getId() { return id; }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
-    public String getLastName() {
-        return lastName;
+    public String getUserName() { return userName; }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
+    public String getPassword(){ return password; }
 
-    public String getEmailAddress() {
-        return emailAddress;
-    }
+    public void setPassword(String password) {this.password = password; }
 
-    public void setEmailAddress(String emailAddress) {
-        this.emailAddress = emailAddress;
-    }
+    public String getEmail(){ return email; }
 
-    public Set<AddressDTO> getAddressList() {
-        return addressList;
-    }
-
-    public void setAddressList(Set<AddressDTO> addressList) {
-        this.addressList = addressList;
-    }
+    public void setEmailA(String email) {this.email = email; }
 
 }
